@@ -139,9 +139,7 @@ function source.rewind(src)
     end
 end
 
--- chains a source with one or several filter(s)
-function source.chain(src, f, ...)
-    if ... then f=filter.chain(f, ...) end
+function source.chain(src, f)
     base.assert(src and f)
     local last_in, last_out = "", ""
     local state = "feeding"
@@ -256,13 +254,8 @@ function sink.error(err)
     end
 end
 
--- chains a sink with one or several filter(s)
-function sink.chain(f, snk, ...)
-    if ... then
-        local args = { f, snk, ... }
-        snk = table.remove(args, #args)
-        f = filter.chain(unpack(args))
-    end
+-- chains a sink with a filter
+function sink.chain(f, snk)
     base.assert(f and snk)
     return function(chunk, err)
         if chunk ~= "" then
