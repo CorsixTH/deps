@@ -1,0 +1,14 @@
+prefix=/home/stephen/testdeps-x64
+exec_prefix=/home/stephen/testdeps-x64
+libdir=/home/stephen/testdeps-x64/lib
+includedir=/home/stephen/testdeps-x64/include/freetype2
+
+Name: FreeType 2
+URL: http://freetype.org
+Description: A free, high-quality, and portable font engine.
+Version: 18.0.12
+Requires:
+Requires.private: 
+Libs: -L${libdir} -lfreetype
+Libs.private: 
+Cflags: -I${includedir}
